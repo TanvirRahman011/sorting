@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+// Function to sort the first k elements using Insertion Sort
+void partialInsertionSort(int arr[], int n, int k) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        // Move elements of arr[0..i-1] that are greater than key
+        // to one position ahead of their current position
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+
+        // Stop sorting after the first k elements are sorted
+        if (i == k - 1) {
+            break;
+        }
+    }
+}
+
+int main() {
+    int n = 6; // Number of elements in the array
+    int arr[] = {6, 7, 5, 3, 9, 1}; // The input array
+    int k = 3; // Length of the sorted partition
+
+    // Partially sort the first k elements
+    partialInsertionSort(arr, n, k);
+
+    // Print the first k sorted elements
+    for (int i = 0; i < k; i++) {
+        printf("%d", arr[i]);
+        if (i < k - 1) {
+            printf(", ");
+        }
+    }
+    printf("\n");
+
+    return 0;
+}

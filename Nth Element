@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+
+void sortArray(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (arr[i] > arr[j]) {
+     
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+float findmedian(int arr[],int size){
+    if(size%2==0){
+        return(arr[size/2-1])+arr[size/2]/2.0;
+    }
+    else{
+        return arr[size/2];
+    }
+
+    
+}
+int main(){
+    int n;
+   int low=0,high=n-1, mid;
+  
+   scanf("%d",&n);
+   int arr[n];
+   for(int i=0;i<n;i++){
+    scanf("%d",&arr[i]);
+   }
+   sortArray(arr,n);
+  
+   printf("%f\n",findmedian(arr,n));
+}
